@@ -1,6 +1,6 @@
 FROM apluslms/run-python3
 
-RUN pip3 install sphinx pyyaml \
+RUN pip3 install sphinx pyyaml Unidecode \
   && rm -rf /root/.cache
 
 WORKDIR /compile
