@@ -16,6 +16,7 @@ RUN apt-get update -qqy && DEBIAN_FRONTEND=noninteractive apt-get install -qqy -
     "sphinx<1.7" \
     Unidecode \
   && rm -rf /root/.cache
+COPY legacy_build.sh /usr/local/bin/legacy_build
 
 WORKDIR /compile
 VOLUME /compile
