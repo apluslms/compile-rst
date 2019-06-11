@@ -1,0 +1,25 @@
+#!/bin/sh -eu
+[ "${DEBUG:-}" ] && set -x
+
+echo " # The old style MOOC-Grader build script"
+echo " # --------------------------------------"
+
+if [ -e build.sh ]; then
+	echo " ### Detected a 'build.sh'"
+	set -- /bin/bash build.sh "$@"
+elif [ -e Makefile ] && grep -qsE '^SPHINXBUILD' Makefile && grep -qsE '^html:' Makefile; then
+	echo " ### Detected a sphinx Makefile"
+	if [ "${*#*html*}" ]; then
+		set -- "$@" html
+	fi
+	if grep -qsE '^touchrst:' Makefile; then
+		set -- touchrst "$@"
+	fi
+	set -- make "$@"
+else
+	echo " ### No build.sh, sphinx Makefile or a-plus-rst-tools conf.py. Nothing to do.."
+	exit 1
+fi
+
+set -x
+exec "$@"

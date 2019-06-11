@@ -1,0 +1,38 @@
+#!/bin/sh -eu
+[ "${DEBUG:-}" ] && set -x
+
+clean=${CLEAN_BUILD:+yes}
+touchrst=
+while [ $# -gt 0 ]; do
+    case "$1" in
+        -C|--clean|clean) clean=yes ;;
+        -c|--use-cache) clean= ;;
+        --touchrst|touchrst) touchrst=yes ;;
+        html) ;;
+        --) shift ; break ;;
+        *) echo "ERROR: Invalid option '$1' for $0" >&2 ; exit 64 ;;
+        *) break ;;
+    esac
+    shift
+done
+
+# FIXME: find a way to get rid of this
+if ! [ -e a-plus-rst-tools ]; then
+    ln -s /opt/a-plus-rst-tools .
+fi
+
+export PYTHONPATH=${PYTHONPATH:-}${PYTHONPATH:+:}/opt/a-plus-rst-tools
+BUILDDIR=${BUILDDIR:-${BUILD_DEST:-_build}}
+
+# force rebuild
+[ "$touchrst" ] && find . -name "*.rst" -exec touch {} \;
+
+# build html + yaml
+sphinx-build -b html -d "$BUILDDIR/doctrees" ${clean:+-E} ${SPHINXOPTS:-} . "${BUILDDIR}/html"
+ret=$?
+
+if [ -h a-plus-rst-tools ]; then
+    rm a-plus-rst-tools
+fi
+
+exit $ret

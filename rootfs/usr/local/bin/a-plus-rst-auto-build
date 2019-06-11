@@ -1,0 +1,13 @@
+#!/bin/sh -eu
+[ "${DEBUG:-}" ] && set -x
+
+if ! [ -e build.sh ] && ! [ -e Makefile ] && [ -e conf.py ] && \
+	grep -qsE '^\s*course_open_date' conf.py && \
+	grep -qsE '^\s*course_close_date' conf.py
+then
+	echo " ### Detected an a-plus-rst-tools conf.py"
+	echo " # --------------------------------------"
+	exec a-plus-rst-build --clean "$@"
+else
+	exec mooc-grader-build "$@"
+fi
