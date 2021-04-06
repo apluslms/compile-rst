@@ -1,4 +1,4 @@
-FROM debian:buster-slim
+FROM debian:buster-20210329-slim
 
 ENV LANG=C.UTF-8
 
@@ -10,11 +10,11 @@ RUN apt-get update -qqy && DEBIAN_FRONTEND=noninteractive apt-get install -qqy -
     python3 \
     python3-pip \
     python3-setuptools \
-    python3-yaml \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/* \
   && pip3 install --no-cache-dir --disable-pip-version-check \
-    "sphinx<1.7" \
+    "sphinx~=3.5.3" \
     Unidecode \
+    "PyYAML~=5.4.1" \
   && rm -rf /root/.cache
 COPY legacy_build.sh /usr/local/bin/legacy_build
 
