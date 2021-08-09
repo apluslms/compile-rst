@@ -1,4 +1,4 @@
-FROM debian:buster-20210329-slim
+FROM debian:buster-20210721-slim
 
 ENV LANG=C.UTF-8
 
@@ -12,7 +12,7 @@ RUN apt-get update -qqy && DEBIAN_FRONTEND=noninteractive apt-get install -qqy -
     python3-setuptools \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/* \
   && pip3 install --no-cache-dir --disable-pip-version-check \
-    "sphinx~=3.5.3" \
+    "sphinx~=4.1.2" \
     Unidecode \
     "PyYAML~=5.4.1" \
   && rm -rf /root/.cache
