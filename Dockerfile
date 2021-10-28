@@ -1,4 +1,4 @@
-FROM debian:stretch-slim
+FROM ubuntu:18.04
 
 ENV LANG=C.UTF-8
 
@@ -7,15 +7,19 @@ RUN apt-get update -qqy && DEBIAN_FRONTEND=noninteractive apt-get install -qqy -
     apt-utils \
     ca-certificates \
     make \
-    python3 \
+    python3.6 \
     python3-pip \
     python3-setuptools \
-    python3-yaml \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/* \
   && pip3 install --no-cache-dir --disable-pip-version-check \
-    "sphinx<1.7" \
+    "docutils~=0.16.0" \
+    "sphinx~=1.6.7" \
+    "recommonmark~=0.7.1" \
+    "PyYAML~=5.4.1" \
     Unidecode \
   && rm -rf /root/.cache
+
+COPY dummy_git.sh /usr/local/bin/git
 COPY legacy_build.sh /usr/local/bin/legacy_build
 
 WORKDIR /compile
