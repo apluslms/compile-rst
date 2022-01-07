@@ -1,4 +1,4 @@
-FROM debian:buster-20210721-slim
+FROM debian:buster-20211220-slim
 
 ENV LANG=C.UTF-8
 
