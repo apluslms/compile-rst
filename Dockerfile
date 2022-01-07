@@ -17,6 +17,8 @@ RUN apt-get update -qqy && DEBIAN_FRONTEND=noninteractive apt-get install -qqy -
     Unidecode \
     "PyYAML~=5.4.1" \
   && rm -rf /root/.cache
+
+COPY dummy_git.sh /usr/local/bin/git
 COPY legacy_build.sh /usr/local/bin/legacy_build
 
 WORKDIR /compile
