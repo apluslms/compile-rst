@@ -13,9 +13,9 @@ RUN apt-get update -qqy && DEBIAN_FRONTEND=noninteractive apt-get install -qqy -
     zip \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/* \
   && pip3 install --no-cache-dir --disable-pip-version-check \
-    "sphinx~=4.1.2" \
+    "sphinx~=4.3.2" \
     Unidecode \
-    "PyYAML~=5.4.1" \
+    "PyYAML~=6.0" \
   && rm -rf /root/.cache
 
 COPY dummy_git.sh /usr/local/bin/git
