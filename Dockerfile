@@ -10,6 +10,7 @@ RUN apt-get update -qqy && DEBIAN_FRONTEND=noninteractive apt-get install -qqy -
     python3.6 \
     python3-pip \
     python3-setuptools \
+    zip \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/* \
   && pip3 install --no-cache-dir --disable-pip-version-check \
     "docutils~=0.16.0" \
