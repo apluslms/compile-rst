@@ -1,4 +1,4 @@
-FROM --platform=$TARGETPLATFORM debian:bullseye-20211220-slim
+FROM --platform=$TARGETPLATFORM debian:bullseye-20230109-slim
 
 ENV LANG=C.UTF-8
 
