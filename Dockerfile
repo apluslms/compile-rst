@@ -1,4 +1,4 @@
-FROM --platform=$TARGETPLATFORM ubuntu:18.04
+FROM ubuntu:18.04
 
 ENV LANG=C.UTF-8
 
@@ -17,8 +17,6 @@ RUN apt-get update -qqy && DEBIAN_FRONTEND=noninteractive apt-get install -qqy -
     "sphinx~=1.6.7" \
     "recommonmark~=0.7.1" \
     "PyYAML~=5.4.1" \
-    "jinja2<=2.9.6" \
-    "markupsafe<2.1.0" \
     Unidecode \
   && rm -rf /root/.cache
 
