@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM --platform=$TARGETPLATFORM ubuntu:18.04
 
 ENV LANG=C.UTF-8
 
