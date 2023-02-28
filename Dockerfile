@@ -1,4 +1,4 @@
-FROM --platform=$TARGETPLATFORM debian:buster-20230109-slim
+FROM debian:buster-20211220-slim
 
 ENV LANG=C.UTF-8
 
