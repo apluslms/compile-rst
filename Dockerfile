@@ -18,6 +18,7 @@ RUN apt-get update -qqy && DEBIAN_FRONTEND=noninteractive apt-get install -qqy -
     "recommonmark~=0.7.1" \
     "PyYAML~=5.4.1" \
     Unidecode \
+    regex \
   && rm -rf /root/.cache
 
 COPY dummy_git.sh /usr/local/bin/git
