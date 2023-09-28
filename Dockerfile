@@ -16,6 +16,7 @@ RUN apt-get update -qqy && DEBIAN_FRONTEND=noninteractive apt-get install -qqy -
     "sphinx~=4.1.2" \
     Unidecode \
     "PyYAML~=5.4.1" \
+    regex \
   && rm -rf /root/.cache
 
 COPY dummy_git.sh /usr/local/bin/git
